@@ -34,6 +34,7 @@ struct EditShoppingItemView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     
                     // MARK: - Quantity Section
                     VStack(alignment: .leading, spacing: EzSpacing.md) {
@@ -65,6 +66,7 @@ struct EditShoppingItemView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     
                     // MARK: - Unit Section
                     VStack(alignment: .leading, spacing: EzSpacing.md) {
@@ -84,6 +86,7 @@ struct EditShoppingItemView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     
                     // MARK: - Notes Section
                     VStack(alignment: .leading, spacing: EzSpacing.md) {
@@ -102,6 +105,7 @@ struct EditShoppingItemView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     
                     // MARK: - Action Buttons
                     VStack(spacing: EzSpacing.md) {
@@ -143,6 +147,7 @@ struct EditShoppingItemView: View {
                         }
                     }
                     .padding(.top, EzSpacing.lg)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
                     
                     Spacer()
                         .frame(height: EzSpacing.xl)

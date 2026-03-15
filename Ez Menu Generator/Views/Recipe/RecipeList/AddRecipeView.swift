@@ -41,6 +41,7 @@ struct AddRecipeView: View {
                                 .scaledToFit()
                                 .frame(height: 200)
                                 .cornerRadius(AppTheme.CornerRadius.medium)
+                                .transition(.opacity.combined(with: .scale(scale: 0.9)))
                         } else {
                             ZStack {
                                 EzColors.Background.tertiary.opacity(0.3)
@@ -65,6 +66,7 @@ struct AddRecipeView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     
                     // MARK: - General Details Section
                     VStack(spacing: EzSpacing.md) {
@@ -121,6 +123,7 @@ struct AddRecipeView: View {
                                     .padding(EzSpacing.sm)
                                     .background(EzColors.Background.tertiary)
                                     .cornerRadius(AppTheme.CornerRadius.small)
+                                    .transition(.opacity.combined(with: .scale(scale: 0.9)))
                                 }
                             }
                         }
@@ -380,6 +383,7 @@ struct AddRecipeView: View {
                         }
                         .disabled(name.isEmpty)
                         .opacity(name.isEmpty ? 0.6 : 1.0)
+                        .scaleEffect(name.isEmpty ? 0.95 : 1.0)
                         
                         Button(action: {
                             dismiss()

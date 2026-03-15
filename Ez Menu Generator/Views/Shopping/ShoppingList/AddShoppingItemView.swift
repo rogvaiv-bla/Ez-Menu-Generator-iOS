@@ -62,6 +62,8 @@ struct AddShoppingItemView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
+                    .scaleEffect(1.0)
                     
                     // MARK: - Articol Section
                     VStack(alignment: .leading, spacing: EzSpacing.md) {
@@ -123,6 +125,7 @@ struct AddShoppingItemView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     
                     // MARK: - Detalii Section
                     VStack(alignment: .leading, spacing: EzSpacing.md) {
@@ -170,6 +173,7 @@ struct AddShoppingItemView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     
                     // MARK: - Note Section
                     VStack(alignment: .leading, spacing: EzSpacing.md) {
@@ -188,6 +192,7 @@ struct AddShoppingItemView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     
                     // MARK: - Action Buttons
                     VStack(spacing: EzSpacing.md) {
@@ -210,6 +215,7 @@ struct AddShoppingItemView: View {
                         }
                         .disabled(!isValid)
                         .opacity(isValid ? 1.0 : 0.6)
+                        .scaleEffect(isValid ? 1.0 : 0.95)
                         
                         Button(action: { dismiss() }) {
                             Text("Anulează")
@@ -225,6 +231,7 @@ struct AddShoppingItemView: View {
                         }
                     }
                     .padding(.top, EzSpacing.lg)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
                     
                     Spacer()
                         .frame(height: EzSpacing.xl)
@@ -233,6 +240,7 @@ struct AddShoppingItemView: View {
             }
             .background(EzColors.Background.primary)
             .scrollIndicators(.hidden)
+            .animation(.easeInOut(duration: 0.3), value: useCustom)
             .navigationTitle("Adaugă articol")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {

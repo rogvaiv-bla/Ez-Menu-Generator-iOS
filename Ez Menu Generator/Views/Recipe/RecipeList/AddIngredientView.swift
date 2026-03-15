@@ -193,6 +193,7 @@ struct AddIngredientView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     
                     // MARK: - Manual Entry Section
                     VStack(spacing: EzSpacing.md) {
@@ -257,6 +258,7 @@ struct AddIngredientView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     
                     // MARK: - Manual Nutrition Input
                     VStack(spacing: EzSpacing.md) {
@@ -311,6 +313,8 @@ struct AddIngredientView: View {
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
                     .cornerRadius(AppTheme.CornerRadius.medium)
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
+                    .animation(.easeInOut(duration: 0.2), value: showManualNutrition)
                     
                     // MARK: - Action Buttons
                     VStack(spacing: EzSpacing.md) {
@@ -351,6 +355,7 @@ struct AddIngredientView: View {
                         }
                         .disabled(name.isEmpty)
                         .opacity(name.isEmpty ? 0.6 : 1.0)
+                        .scaleEffect(name.isEmpty ? 0.95 : 1.0)
                         
                         Button(action: {
                             dismiss()
@@ -365,6 +370,7 @@ struct AddIngredientView: View {
                         }
                     }
                     .padding(.vertical, EzSpacing.md)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
                 }
                 .padding(.horizontal, EzSpacing.md)
                 .padding(.vertical, EzSpacing.md)

@@ -384,6 +384,8 @@ struct AddRecipeView: View {
                         .disabled(name.isEmpty)
                         .opacity(name.isEmpty ? 0.6 : 1.0)
                         .scaleEffect(name.isEmpty ? 0.95 : 1.0)
+                        .accessibilityLabel("Salvează rețetă")
+                        .accessibilityHint("Salvează rețeta cu toate ingredientele și instrucțiunile")
                         
                         Button(action: {
                             dismiss()
@@ -396,6 +398,8 @@ struct AddRecipeView: View {
                                 .foregroundColor(EzColors.Text.primary)
                                 .cornerRadius(AppTheme.CornerRadius.medium)
                         }
+                        .accessibilityLabel("Anulează")
+                        .accessibilityHint("Închide dialogul fără a salva rețeta")
                     }
                     .padding(.vertical, EzSpacing.md)
                 }

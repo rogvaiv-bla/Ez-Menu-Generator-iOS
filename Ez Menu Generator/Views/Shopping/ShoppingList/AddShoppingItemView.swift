@@ -51,6 +51,8 @@ struct AddShoppingItemView: View {
                             }
                         }
                         .pickerStyle(.segmented)
+                        .accessibilityLabel("Categorie de articol")
+                        .accessibilityHint("Selectează categoria pentru articolul pe care doriți să-l adăugați")
                         .onChange(of: selectedCategory) { _, _ in
                             if !itemsForCategory.isEmpty {
                                 selectedItem = itemsForCategory[0]
@@ -101,6 +103,8 @@ struct AddShoppingItemView: View {
                                 
                                 Toggle("", isOn: $useCustom)
                                     .tint(AppTheme.Colors.primary)
+                                    .accessibilityLabel("Articol personalizat")
+                                    .accessibilityHint("Pornit pentru a introduce un articol personalizat în loc de a selecta din listă")
                             }
                             .padding(EzSpacing.sm)
                             .background(EzColors.Background.tertiary.opacity(0.5))
@@ -149,6 +153,8 @@ struct AddShoppingItemView: View {
                             
                             Stepper("", value: $quantity, in: 1...1000, step: 1)
                                 .tint(AppTheme.Colors.primary)
+                                .accessibilityLabel("Cantitate")
+                                .accessibilityHint("Ajustați cantitatea articolului de la 1 la 1000")
                         }
                         .padding(EzSpacing.sm)
                         .background(EzColors.Background.tertiary)
@@ -165,6 +171,8 @@ struct AddShoppingItemView: View {
                                 }
                             }
                             .pickerStyle(.segmented)
+                            .accessibilityLabel("Unitate de măsură")
+                            .accessibilityHint("Selectați unitatea de măsură pentru cantitate")
                         }
                         .padding(EzSpacing.sm)
                         .background(EzColors.Background.tertiary)
@@ -216,6 +224,8 @@ struct AddShoppingItemView: View {
                         .disabled(!isValid)
                         .opacity(isValid ? 1.0 : 0.6)
                         .scaleEffect(isValid ? 1.0 : 0.95)
+                        .accessibilityLabel("Adaugă articol")
+                        .accessibilityHint("Adaugă articolul la lista de cumpărături")
                         
                         Button(action: { dismiss() }) {
                             Text("Anulează")
@@ -229,6 +239,8 @@ struct AddShoppingItemView: View {
                                         .stroke(EzColors.Background.tertiary, lineWidth: 1)
                                 )
                         }
+                        .accessibilityLabel("Anulează")
+                        .accessibilityHint("Închide dialogul fără a adăuga articolul")
                     }
                     .padding(.top, EzSpacing.lg)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))

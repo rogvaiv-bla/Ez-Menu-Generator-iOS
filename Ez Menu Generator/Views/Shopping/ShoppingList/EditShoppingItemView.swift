@@ -58,6 +58,8 @@ struct EditShoppingItemView: View {
                             
                             Stepper("", value: $quantity, in: 1...1000, step: 1)
                                 .tint(AppTheme.Colors.primary)
+                                .accessibilityLabel("Cantitate")
+                                .accessibilityHint("Ajustați cantitatea articolului")
                         }
                         .padding(EzSpacing.sm)
                         .background(EzColors.Background.tertiary)
@@ -82,6 +84,8 @@ struct EditShoppingItemView: View {
                             }
                         }
                         .pickerStyle(.segmented)
+                        .accessibilityLabel("Unitate de măsură")
+                        .accessibilityHint("Selectați unitatea de măsură pentru cantitate")
                     }
                     .padding(EzSpacing.md)
                     .background(EzColors.Background.secondary)
@@ -132,6 +136,8 @@ struct EditShoppingItemView: View {
                             )
                             .foregroundColor(.white)
                         }
+                        .accessibilityLabel("Salvează")
+                        .accessibilityHint("Salvează modificările aduse articolului")
                         
                         Button(action: { dismiss() }) {
                             Text("Anulează")
@@ -145,6 +151,8 @@ struct EditShoppingItemView: View {
                                         .stroke(EzColors.Background.tertiary, lineWidth: 1)
                                 )
                         }
+                        .accessibilityLabel("Anulează")
+                        .accessibilityHint("Închide dialogul fără a salva modificările")
                     }
                     .padding(.top, EzSpacing.lg)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))

@@ -356,6 +356,8 @@ struct AddIngredientView: View {
                         .disabled(name.isEmpty)
                         .opacity(name.isEmpty ? 0.6 : 1.0)
                         .scaleEffect(name.isEmpty ? 0.95 : 1.0)
+                        .accessibilityLabel("Adaugă ingredient")
+                        .accessibilityHint("Adaugă ingredientul la rețetă")
                         
                         Button(action: {
                             dismiss()
@@ -368,6 +370,8 @@ struct AddIngredientView: View {
                                 .foregroundColor(EzColors.Text.primary)
                                 .cornerRadius(AppTheme.CornerRadius.medium)
                         }
+                        .accessibilityLabel("Anulează")
+                        .accessibilityHint("Închide dialogul fără a adăuga ingredientul")
                     }
                     .padding(.vertical, EzSpacing.md)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))

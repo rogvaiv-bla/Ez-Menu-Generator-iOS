@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "lib": ["deno.window"],
+    "allowJs": true,
+    "strict": true
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "imports": {
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.43.0"
+  }
+}

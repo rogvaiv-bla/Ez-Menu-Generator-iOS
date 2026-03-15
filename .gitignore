@@ -1,0 +1,77 @@
+# Xcode
+DerivedData/
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Build outputs
+build/
+*.app
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# SPM
+.build/
+Package.resolved
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# System files
+.DS_Store
+.AppleDouble
+.LSOverride
+*.cer
+*.p12
+*.mobileprovision
+*.provisioning
+
+# IDE
+*.swiftformat
+.swiftformat
+
+# Temporary files
+*.tmp
+*.log
+
+# Test coverage
+coverage/
+.codecov.yml
+
+# App Store Connect
+*.ipa
+*.symbols
+
+# Secrets (API keys, certificates)
+**/Keys/*
+**/Secrets/*
+*.pem
+*.key
+
+# Development files to exclude
+*.bak
+*.backup
+.temp/
+
+# Generated files (usually safe to exclude)
+*.generated.swift
+
+# Platform-specific
+.DS_Store
+thumbs.db
+
+# Misc
+.gitkeep

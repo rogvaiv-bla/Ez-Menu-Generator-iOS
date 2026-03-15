@@ -1,0 +1,211 @@
+🆘 CUMPĂRĂTURI 🛒
+Legume / Fructe 
+- [ ] Castraveți 🥒
+- [ ] Sfeclă
+- [ ] Salată 🥗 
+- [x] Avocado 🥑 
+- [x] Mere 🍎🍏
+- [x] Banane 🍌
+- [x] Lămâi 🍋 
+- [x] Cartofi 🥔
+- [x] Morcovi 🥕
+- [x] Ardei Kapia 
+- [x] Roșii 🍅
+- [x] Pătrunjel / mărar 🌿
+- [x] Usturoi 🧄
+- [x] Ceapă 🧅 
+- [x] Ardel grăsuț 🌶️
+- [x] Litchi 
+- [x] Clementine 🍊
+- [x] Portocale 🍊 
+- [x] Ceapǎ roșie 
+- [x] Struguri 🍇
+- [x] Țelină 
+- [x] Porumb 🌽
+- [x] Vânătă 🍆 
+- [x] Caise 
+- [x] Varză 🥬 
+- [x] Frunze de vie 🍃
+- [x] Pepene 🍉 
+- [x] Cireșe 🍒 
+- [x] Ananas 🍍 
+- [x] Nectarine 🍑 
+- [x] Piersici 🍑
+- [x] Căpșuni 🍓
+- [x] Păstăi congelate 🫛
+- [x] Pomelo 🍈
+- [x] Fistic 🫘
+- [x] Spanac 🌿
+- [x] Afine 🫐 
+- [x] Castravete Fabio 🥒
+- [x] Ciuperci 🍄
+- [x] Mazăre 🫛
+Lactate și ouă 
+- [ ] Kefir
+- [x] Ouă 🥚 30
+- [x] Lapte 🥛 1
+- [x] Iaurt cu fructe 
+- [x] Iaurt grecesc 🧿
+- [x] Madame Loik
+- [x] Unt 🧈 
+- [x] Smântână  3
+- [x] Brânză rasă 2
+- [x] Clafoutis
+- [x] Ruladǎ de caprǎ 🐐
+- [x] Cremă de brânză Madame Loik 
+- [x] Brânza Turc 🇹🇷
+- [x] Lapte condensat 2
+- [x] Crème entière 2
+- [x] Kiri 
+- [x] Brânza proaspătă Faisselle
+- [x] Cașcaval 🧀 
+- [x] Brânzică Făgăraș
+- [x] Smântână pentru frișcă
+- [x] Mascarpone
+- [x] Frișcă lichidă
+Carne
+- [x] Carne vită/porc 🥩
+- [x] Găină🐓
+- [x] Piept de pui 🧆🍗
+- [x] Cap de porc 🐷
+- [x] Picioare de porc 🍖
+- [x] Pulpe de pui🐣 
+- [x] Cârnați 
+- [x] Carne tocată de vită 
+- [x] Șuncă 🥓
+- [x] Ficaței de pui 
+- [x] Carne tocată de porc
+Gospodarie
+- [x] Detergent de vase 🫧
+- [x] Hârtie igienica 🧻
+- [x] Sacoșe 1L
+- [x] Rolă de hârtie 🧻 
+- [x] Săpun
+- [x] Decolorant haine
+- [x] Lavete
+- [x] Balsam de rufe 
+- [x] Spălător de sârmă 
+- [x] Soluție WC
+- [x] Role scame
+- [x] Déboucher 
+- [x] Javel 
+- [x] Odorizant baie 
+- [x] Hârtie de copt 
+- [x] Saci gunoi - baie 
+- [x] Șervețele nazale
+- [x] Degresant puternic
+- [x] Detergent haine 🫧
+- [x] Săpun lichid 🧴
+- [x] Calgon 
+- [x] Bureți de vase
+- [x] Scobitori 
+- [x] Folie alimentară 
+- [x] Saci aspirator
+- [x] Kit îngrijire ghete 🥾
+Ingrijire personală 
+- [x] Deodorant Dana
+- [x] Capete periuță 🪥
+- [x] Parfum
+- [x] Gel de dus 🛀
+- [x] Șervețele umede 📃
+- [x] Pastă de dinți 🪥🦷
+- [x] Lame de ras 🪒
+- [x] Șampon
+- [x] Bețișoare de urechi
+- [x] Lame de tuns - OneBlade
+Farmacie
+- [x] Pentru gât
+- [x] Leucoplast
+- [x] Decasept
+- [x] Spirt
+- [x] Ibuprofen 
+- [x] Iod
+Băuturi
+- [x] Apă 💧 
+- [x] Coca Cola🥤
+- [x] Suc de fructe 🧃
+- [x] Capsule cafea ☕️
+- [x] Sprite
+- [x] Bere 🍺
+- [x] Vin🍷
+Brutarie
+- [x] Pâine 🍞
+- [x] Pâine feliată 🥪
+- [x] Biscuiți WASA 🍘
+- [x] Baghetă 🥖 
+- [x] Lipii 🫓
+Pește
+- [x] Crochete de cod 🍣🐟
+- [x] Conserve ton/somon 
+- [x] Rillettes de thon 2+2 
+- [x] Ton   
+- [x] Somon afumat 🍣 
+- [x] Peşte 🎣 congelat
+- [x] Icre
+Cămară
+- [ ] Esență de vanilie 
+- [ ] Stafide
+- [x] Nuci 
+- [x] Piper
+- [x] Zahăr cuburi
+- [x] Ulei de măsline 🫒 
+- [x] Aluat patiserie
+- [x] Maioneză 
+- [x] Orez 🍙 1
+- [x] Sos tomat
+- [x] Faină 3kg
+- [x] Zahăr 1kg
+- [x] Oțet 
+- [x] Pesto
+- [x] Grâu Auchan 🌾
+- [x] Paste linguine
+- [x] Aluat pizza
+- [x] Pastă de tomate 🥫
+- [x] Filtru cană Brita
+- [x] Mălai
+- [x] Pateu mic
+- [x] Sare 🧂 
+- [x] Ceai tata 🫖
+- [x] Paste coquillettes 
+- [x] Ulei de floarea soarelui 🌻
+- [x] Zahăr vanilat 
+- [x] Ciuperci borcan 
+- [x] Ulei de cocos 🥥
+- [x] Drojdie
+- [x] Ceai negru 
+- [x] Paste 🍝
+- [x] Zahăr pudră
+- [x] Roșii pasate
+- [x] Conservă fasole albe 🫘 
+- [x] Hrișcă
+- [x] Conservă de roșii 🥫 
+- [x] Pudră de chilli 🌶️
+- [x] Chimion🫩
+- [x] Pesmet
+- [x] Scorțișoară
+- [x] Castraveți în oțet 🥒
+- [x] Muștar
+- [x] Sfeclă roșie cu hrean
+Dulciuri
+- [x] Dulciuri 🍬
+- [x] Batoane Nakd
+- [x] Biscuiți capră
+- [x] Bucățele de ciocolată 🍫 
+- [x] Ciocolată 🍫 
+- [x] Înghețată 🍧🍦
+- [x] Sirop Agave
+- [x] Panettone 
+- [x] Cereale 🥣 (fulgi de ovăz)
+De îmbrăcat 
+- [x] Șlapi
+- [x] Hanorac
+- [x] Pulover
+- [x] Pantaloni scurți
+Altele
+- [x] Sită/plasă chiuvetă
+- [x] Bec congelator 40W E27
+- [x] Hârtie A4
+- [x] Folii dosar 
+- [x] Markere whiteboard
+- [x] Farfurie adâncă 
+- [x] Papuci medicali Dana  

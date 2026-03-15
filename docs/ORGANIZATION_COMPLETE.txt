@@ -1,0 +1,72 @@
+# iOS App Organization - COMPLETE
+
+## Final Directory Structure
+
+```
+/dieta/
+|-- update_menu.py              (Web app)
+|-- update_recipes.py            (Web app)
+|-- iOS_App/
+    |-- Ez Menu Generator/       (MVVM iOS App)
+    |   |-- App/
+    |   |   |-- EzMenuGeneratorApp.swift
+    |   |-- Models/ (4 files)
+    |   |   |-- Ingredient.swift
+    |   |   |-- Recipe.swift
+    |   |   |-- Menu.swift
+    |   |   |-- ShoppingItem.swift
+    |   |-- Services/ (3 files)
+    |   |   |-- StorageService.swift
+    |   |   |-- SampleDataService.swift
+    |   |   |-- DataSeeder.swift
+    |   |-- ViewModels/ (4 files)
+    |   |   |-- RecipeListViewModel.swift
+    |   |   |-- MenuListViewModel.swift
+    |   |   |-- MenuEditorViewModel.swift
+    |   |   |-- ShoppingListViewModel.swift
+    |   |-- Views/ (17 files)
+    |   |   |-- ContentView/ (1)
+    |   |   |-- RecipeList/ (5)
+    |   |   |-- MenuList/ (3)
+    |   |   |-- MenuEditor/ (4)
+    |   |   |-- ShoppingList/ (4)
+    |   |-- Design/
+    |   |   |-- AppTheme.swift
+    |   |-- Ez Menu Generator.xcodeproj
+```
+
+## Statistics
+
+- Total Swift Files: 30
+- Models: 4 (Ingredient, Recipe, Menu, ShoppingItem)
+- Services: 3 (StorageService, SampleDataService, DataSeeder)
+- ViewModels: 4 (Recipe, Menu, MenuEditor, ShoppingList)
+- Views: 17 (organized by feature)
+- Design: 1 (AppTheme with colors & styles)
+- App: 1 (SwiftData setup & entry)
+
+## Organization Complete
+
+✓ Web app files remain in /dieta/ root
+✓ iOS app files organized in Ez Menu Generator/
+✓ MVVM architecture properly structured
+✓ All 30 Swift files in correct locations
+✓ Old/duplicate files removed
+✓ File naming conventions consistent
+
+## Architecture Highlights
+
+- SwiftUI (100% declarative)
+- SwiftData (models with @Model decorator)
+- MVVM pattern (ViewModels with @Published state)
+- Observable patterns (reactive UI updates)
+- Custom theme system (colors, text styles)
+- 8 sample Romanian recipes pre-loaded
+- Search, filtering, and sorting capabilities
+
+## Next: Xcode Build
+
+1. Open Ez Menu Generator.xcodeproj
+2. Target iOS 17+
+3. Build & Run
+4. Data auto-seeds on first launch

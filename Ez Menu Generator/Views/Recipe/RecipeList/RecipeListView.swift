@@ -23,22 +23,11 @@ struct RecipeListView: View {
                 // Main Content
                 ZStack {
                     if viewModel.filteredRecipes.isEmpty {
-                        VStack(spacing: 20) {
-                            Image(systemName: "book.fill")
-                                .font(.system(size: 48))
-                                .foregroundColor(EzColors.Accent.primary.opacity(0.3))
-                                .accessibilityHidden(true)
-                            Text("Nicio rețetă")
-                                .headlineStyle()
-                            Text("Adaugă prima ta rețetă")
-                                .bodyStyle()
-                                .foregroundColor(EzColors.Text.secondary)
+                        EmptyStateView.noRecipes {
+                            showAddRecipe = true
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(EzColors.Background.primary)
-                        .accessibilityElement(children: .combine)
-                        .accessibilityLabel("Lista de rețete este goală")
-                        .accessibilityHint("Apasă butonul plus pentru a adăuga prima rețetă")
                     } else {
                         List {
                             ForEach(viewModel.filteredRecipes, id: \.id) { recipe in

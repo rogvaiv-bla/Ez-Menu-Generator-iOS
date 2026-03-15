@@ -9,9 +9,9 @@ struct ProductDetailView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: EzSpacing.lg) {
                     // Header
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: EzSpacing.md) {
                         Text(product.name)
                             .font(.title)
                             .fontWeight(.bold)
@@ -20,8 +20,8 @@ struct ProductDetailView: View {
                             Text(product.category)
                                 .font(.caption)
                                 .foregroundColor(EzColors.Text.secondary)
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 4)
+                                .padding(.horizontal, EzSpacing.sm)
+                                .padding(.vertical, EzSpacing.xs)
                                 .background(EzColors.Accent.primary.opacity(0.1))
                                 .cornerRadius(4)
                             
@@ -34,12 +34,12 @@ struct ProductDetailView: View {
                             }
                         }
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, EzSpacing.lg)
                     
                     Divider()
                     
                     // Calories Card
-                    VStack(spacing: 8) {
+                    VStack(spacing: EzSpacing.md) {
                         HStack {
                             Image(systemName: "flame.fill")
                                 .foregroundColor(EzColors.Accent.warning)
@@ -52,18 +52,18 @@ struct ProductDetailView: View {
                             .font(.system(size: 32, weight: .bold))
                             .foregroundColor(EzColors.Accent.warning)
                     }
-                    .padding()
+                    .padding(EzSpacing.md)
                     .background(EzColors.Accent.warning.opacity(0.1))
-                    .cornerRadius(12)
-                    .padding(.horizontal)
+                    .cornerRadius(AppTheme.CornerRadius.medium)
+                    .padding(.horizontal, EzSpacing.lg)
                     
                     // Macronutrients
-                    VStack(spacing: 12) {
+                    VStack(spacing: EzSpacing.md) {
                         Text("Macronutrienți (per 100g)")
                             .font(.headline)
-                            .padding(.horizontal)
+                            .padding(.horizontal, EzSpacing.lg)
                         
-                        HStack(spacing: 12) {
+                        HStack(spacing: EzSpacing.md) {
                             MacroDetailCard(label: "Proteine", value: product.nutrition.protein, unit: "g", color: EzColors.Accent.danger, icon: "💪")
                             MacroDetailCard(label: "Carbohidrați", value: product.nutrition.carbohydrates, unit: "g", color: EzColors.Accent.primary, icon: "⚡")
                             MacroDetailCard(label: "Grăsimi", value: product.nutrition.fat, unit: "g", color: EzColors.NutritionScore.fair, icon: "🧈")

@@ -13,12 +13,8 @@ struct ShoppingListPreviewView: View {
         NavigationStack {
             ZStack {
                 if shoppingList.isEmpty {
-                    VStack {
-                        Image(systemName: "cart.fill")
-                            .font(.system(size: 48))
-                            .foregroundColor(EzColors.Accent.primary.opacity(0.3))
-                        Text("Lista goală")
-                            .headlineStyle()
+                    EmptyStateView.noShoppingItems {
+                        dismiss()
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(EzColors.Background.primary)

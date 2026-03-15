@@ -17,11 +17,12 @@ struct MenuEditorView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
+            VStack(spacing: EzSpacing.lg) {
                 // Statistics section
                 MenuStatsView(menu: menu)
                 
                 Divider()
+                    .padding(.vertical, EzSpacing.md)
                 
                 // Days section
                 ForEach(0..<menu.meals.count, id: \.self) { day in
@@ -37,11 +38,13 @@ struct MenuEditorView: View {
                             }
                         )
                         .environmentObject(recipeViewModel)
+                        .transition(.scale.combined(with: .opacity))
                     }
                 }
             }
-            .padding()
+            .padding(EzSpacing.lg)
         }
+        .background(EzColors.Background.primary)
         .navigationTitle(menu.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

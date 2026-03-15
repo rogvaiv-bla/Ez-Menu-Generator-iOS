@@ -13,7 +13,7 @@ struct DayMealSelectorView: View {
     @State private var showDinnerPicker = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: EzSpacing.md) {
             HStack {
                 Text(dayName)
                     .headlineStyle()
@@ -21,10 +21,10 @@ struct DayMealSelectorView: View {
                 Button(action: { onDayRegenerate?() }) {
                     Image(systemName: "arrow.clockwise")
                         .font(.caption)
-                        .padding(6)
+                        .padding(EzSpacing.xs)
                         .background(EzColors.Accent.primary.opacity(0.1))
                         .foregroundColor(EzColors.Accent.primary)
-                        .cornerRadius(6)
+                        .cornerRadius(AppTheme.CornerRadius.small)
                 }
                 .help("Regenerează ziua")
             }
@@ -34,7 +34,7 @@ struct DayMealSelectorView: View {
                 HStack {
                     Image(systemName: "sunrise.fill")
                         .foregroundColor(EzColors.Accent.primary)
-                    VStack(alignment: .leading, spacing: 2) {
+                    VStack(alignment: .leading, spacing: EzSpacing.xs) {
                         Text("Mic dejun")
                             .font(.caption)
                             .foregroundColor(EzColors.Text.secondary)
@@ -45,9 +45,9 @@ struct DayMealSelectorView: View {
                     Image(systemName: "chevron.right")
                         .foregroundColor(EzColors.Text.secondary)
                 }
-                .padding()
+                .padding(EzSpacing.md)
                 .background(EzColors.Background.secondary)
-                .cornerRadius(8)
+                .cornerRadius(AppTheme.CornerRadius.medium)
             }
             .sheet(isPresented: $showBreakfastPicker) {
                 RecipePickerView(onRecipeSelected: { recipe in
@@ -62,7 +62,7 @@ struct DayMealSelectorView: View {
                 HStack {
                     Image(systemName: "sun.max.fill")
                         .foregroundColor(EzColors.Accent.warning)
-                    VStack(alignment: .leading, spacing: 2) {
+                    VStack(alignment: .leading, spacing: EzSpacing.xs) {
                         Text("Prânz")
                             .font(.caption)
                             .foregroundColor(EzColors.Text.secondary)
@@ -73,9 +73,9 @@ struct DayMealSelectorView: View {
                     Image(systemName: "chevron.right")
                         .foregroundColor(EzColors.Text.secondary)
                 }
-                .padding()
+                .padding(EzSpacing.md)
                 .background(EzColors.Background.secondary)
-                .cornerRadius(8)
+                .cornerRadius(AppTheme.CornerRadius.medium)
             }
             .sheet(isPresented: $showLunchPicker) {
                 RecipePickerView(onRecipeSelected: { recipe in
@@ -90,7 +90,7 @@ struct DayMealSelectorView: View {
                 HStack {
                     Image(systemName: "moon.fill")
                         .foregroundColor(EzColors.Accent.success)
-                    VStack(alignment: .leading, spacing: 2) {
+                    VStack(alignment: .leading, spacing: EzSpacing.xs) {
                         Text("Cină")
                             .font(.caption)
                             .foregroundColor(EzColors.Text.secondary)
@@ -101,9 +101,9 @@ struct DayMealSelectorView: View {
                     Image(systemName: "chevron.right")
                         .foregroundColor(EzColors.Text.secondary)
                 }
-                .padding()
+                .padding(EzSpacing.md)
                 .background(EzColors.Background.secondary)
-                .cornerRadius(8)
+                .cornerRadius(AppTheme.CornerRadius.medium)
             }
             .sheet(isPresented: $showDinnerPicker) {
                 RecipePickerView(onRecipeSelected: { recipe in
@@ -113,10 +113,15 @@ struct DayMealSelectorView: View {
                 .environmentObject(recipeViewModel)
             }
         }
-        .padding()
+        .padding(EzSpacing.md)
         .background(EzColors.Background.primary)
-        .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
+        .cornerRadius(AppTheme.CornerRadius.medium)
+        .shadow(
+            color: Color.black.opacity(0.05),
+            radius: 4,
+            x: 0,
+            y: 2
+        )
     }
 }
 

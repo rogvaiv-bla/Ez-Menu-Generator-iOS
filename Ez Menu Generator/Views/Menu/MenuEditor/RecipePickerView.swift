@@ -62,12 +62,8 @@ struct RecipePickerView: View {
         NavigationStack {
             ZStack {
                 if filteredRecipes.isEmpty {
-                    VStack {
-                        Image(systemName: "book.fill")
-                            .font(.system(size: 48))
-                            .foregroundColor(EzColors.Accent.primary.opacity(0.3))
-                        Text("Nicio rețetă")
-                            .headlineStyle()
+                    EmptyStateView.noRecipes {
+                        dismiss()
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(EzColors.Background.primary)

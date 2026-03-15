@@ -8,11 +8,11 @@ struct MenuStatsView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: EzSpacing.lg) {
             Text("Statistici săptămână")
                 .headlineStyle()
             
-            VStack(spacing: 10) {
+            VStack(spacing: EzSpacing.md) {
                 StatRow(label: "🥩 Carne roșie", value: "\(stats.redMeatDays)/1", color: stats.redMeatDays > 1 ? EzColors.Accent.danger : EzColors.Accent.success)
                 StatRow(label: "🍗 Carne de pasăre", value: "\(stats.poultryDays)/2", color: stats.poultryDays > 2 ? EzColors.Accent.warning : EzColors.Accent.success)
                 StatRow(label: "🐟 Pește", value: "\(stats.fishDays)/2", color: stats.fishDays > 2 ? EzColors.Accent.warning : EzColors.Accent.success)
@@ -23,12 +23,12 @@ struct MenuStatsView: View {
                 StatRow(label: "🧀 Brânză (max 20g/zi)", value: "✓", color: EzColors.Accent.success)
                 StatRow(label: "🥜 Nuci (max 20g/zi)", value: "✓", color: EzColors.Accent.success)
             }
-            .padding()
+            .padding(EzSpacing.md)
             .background(EzColors.Background.secondary)
-            .cornerRadius(8)
+            .cornerRadius(AppTheme.CornerRadius.medium)
             
             // Legend
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: EzSpacing.sm) {
                 HStack(spacing: 8) {
                     Circle().fill(EzColors.Accent.success).frame(width: 8, height: 8)
                     Text("Conform restricțiilor").font(.caption)
@@ -42,12 +42,12 @@ struct MenuStatsView: View {
                     Text("Depășit").font(.caption)
                 }
             }
-            .padding(.top, 8)
+            .padding(.top, EzSpacing.sm)
             .foregroundColor(EzColors.Text.tertiary)
         }
-        .padding()
+        .padding(EzSpacing.md)
         .background(EzColors.Background.secondary)
-        .cornerRadius(12)
+        .cornerRadius(AppTheme.CornerRadius.medium)
     }
     
     private func calculateStats() -> MenuStats {

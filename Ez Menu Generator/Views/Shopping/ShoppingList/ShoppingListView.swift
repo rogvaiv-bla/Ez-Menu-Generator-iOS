@@ -35,7 +35,7 @@ struct ShoppingListView: View {
                     .environmentObject(viewModel)
             }
             .sheet(isPresented: $showProductSearch) {
-                ProductSearchView()
+                AnalyzeView()
             }
             .sheet(isPresented: $showMenu) {
                 ShoppingListMenuSheet(viewModel: viewModel, isPresented: $showMenu)

@@ -83,8 +83,8 @@ class ServiceContainer {
         ShoppingListViewModel(storageService: storageService)
     }
     
-    func makeProductSearchViewModel() -> ProductSearchViewModel {
-        ProductSearchViewModel(productSearchService: productSearchService)
+    func makeAnalyzeViewModel() -> AnalyzeViewModel {
+        AnalyzeViewModel(productSearchService: productSearchService)
     }
 }
 

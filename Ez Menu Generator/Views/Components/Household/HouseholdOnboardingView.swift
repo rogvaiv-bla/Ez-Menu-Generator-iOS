@@ -50,7 +50,7 @@ struct HouseholdOnboardingView: View {
                 .padding(.vertical, 32)
                 
                 Divider()
-                    .padding(.vertical, 24)
+                    .padding(.vertical, 20)
                 
                 HStack(spacing: 0) {
                     Button(action: { selectedMode = .create }) {

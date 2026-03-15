@@ -219,12 +219,12 @@ struct MacroCircleView: View {
             ZStack {
                 Circle()
                     .stroke(EzColors.Background.surface.opacity(0.5), lineWidth: 3)
-                    .frame(width: 60, height: 60)
+                    .frame(width: 52, height: 52)
                 
                 Circle()
                     .trim(from: 0, to: percentage / 100)
                     .stroke(color, style: StrokeStyle(lineWidth: 3, lineCap: .round))
-                    .frame(width: 60, height: 60)
+                    .frame(width: 52, height: 52)
                     .rotationEffect(.degrees(-90))
                     .animation(.easeInOut(duration: 0.8), value: percentage)
                 

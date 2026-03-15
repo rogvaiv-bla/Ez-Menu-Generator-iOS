@@ -17,13 +17,13 @@ struct RecipeRowView: View {
                     
                     VStack {
                         Image(systemName: categoryIcon)
-                            .font(.system(size: 24, weight: .semibold))
+                            .font(.system(size: 20, weight: .semibold))
                             .foregroundColor(
                                 EzColors.categoryColors[recipe.category] ?? EzColors.Accent.primary
                             )
                     }
                 }
-                .frame(width: 60, height: 60)
+                .frame(width: 52, height: 52)
                 
                 // Recipe Info
                 VStack(alignment: .leading, spacing: EzSpacing.sm) {

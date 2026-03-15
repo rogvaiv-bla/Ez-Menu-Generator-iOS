@@ -15,20 +15,20 @@ struct EzSpacing {
     /// 12px - Medium component spacing (1.5 × base)
     static let base: CGFloat = 12
     
-    /// 16px - Standard medium spacing (2 × base)
+    /// 14px - Standard medium spacing (1.75 × base)
     /// Card padding, icon-text gap, section internal spacing
-    static let md: CGFloat = 16
+    static let md: CGFloat = 14
     
-    /// 20px - Large component spacing (2.5 × base)
-    static let lg: CGFloat = 20
+    /// 16px - Large component spacing (2 × base)
+    static let lg: CGFloat = 16
     
-    /// 24px - Major section spacing (3 × base)
+    /// 20px - Major section spacing (2.5 × base)
     /// Section margins, card vertical spacing
-    static let xl: CGFloat = 24
+    static let xl: CGFloat = 20
     
-    /// 32px - Extra large inter-section gaps (4 × base)
+    /// 24px - Extra large inter-section gaps (3 × base)
     /// Between major sections, top/bottom padding
-    static let xxl: CGFloat = 32
+    static let xxl: CGFloat = 24
     
     /// 40px - Screen edge spacing (5 × base)
     static let screen: CGFloat = 40

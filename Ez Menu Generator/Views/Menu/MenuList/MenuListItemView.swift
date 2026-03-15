@@ -38,14 +38,14 @@ struct MenuListItemView: View {
                             .font(EzTypography.Helper.font)
                             .foregroundColor(EzColors.Text.secondary)
                     }
-                    .padding(EzSpacing.md)
+                    .padding(EzSpacing.sm)
                     .background(
                         RoundedRectangle(cornerRadius: AppTheme.CornerRadius.small)
                             .fill(AppTheme.Colors.primary.opacity(0.1))
                     )
                 }
             }
-            .padding(EzSpacing.lg)
+            .padding(EzSpacing.md)
             .background(
                 LinearGradient(
                     gradient: Gradient(colors: [
@@ -58,7 +58,7 @@ struct MenuListItemView: View {
             )
             
             // Content
-            VStack(spacing: EzSpacing.lg) {
+            VStack(spacing: EzSpacing.md) {
                 // 7-day Progress Indicator
                 VStack(alignment: .leading, spacing: EzSpacing.sm) {
                     Text("Weekly Schedule")
@@ -130,11 +130,11 @@ struct MenuListItemView: View {
                 .scaleEffect(isHovered ? 1.02 : 1.0)
                 .animation(AppTheme.springSnappy, value: isHovered)
             }
-            .padding(EzSpacing.lg)
+            .padding(EzSpacing.md)
         }
         .premiumCard(elevation: .medium)
         .padding(.horizontal, EzSpacing.md)
-        .padding(.vertical, EzSpacing.sm)
+        .padding(.vertical, EzSpacing.xs)
         .transition(.scale.combined(with: .opacity))
         .animation(AppTheme.springStandard, value: menu.id)
         .onHover { hover in

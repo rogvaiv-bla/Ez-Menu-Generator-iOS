@@ -1,150 +1,127 @@
 import SwiftUI
 
-/// REDESIGN 2.0 - Main Theme Manager
-/// Dark mode first, uses EzColors + EzSpacing + EzTypography
-/// Kept for backward compatibility during migration
+/// REDESIGN 2.0 - Premium Main Theme Manager (Apple 2025 Style)
+/// Centralized design system with animations, spacing, colors, typography, shadows
 struct AppTheme {
     
-    // MARK: - Animation
+    // MARK: - Animation Curves (Premium feel)
+    static let springStandard = Animation.spring(response: 0.6, dampingFraction: 0.8)
+    static let springSnappy = Animation.spring(response: 0.4, dampingFraction: 0.7)
+    static let springBouncy = Animation.spring(response: 0.8, dampingFraction: 0.6)
+    
     static let animationDuration: Double = 0.3
     static let animationDurationQuick: Double = 0.15
     static let animationDurationSlow: Double = 0.5
     
-    // MARK: - NEW SYSTEM: Use EzColors instead
-    // Colors are now in Colors.swift (EzColors)
-    
-    // MARK: - DEPRECATED: Legacy Spacing (use EzSpacing instead)
-    /// Deprecated - Use EzSpacing instead
-    static let spacing8: CGFloat = 8
-    /// Deprecated - Use EzSpacing instead
-    static let spacing12: CGFloat = 12
-    /// Deprecated - Use EzSpacing instead
-    static let spacing16: CGFloat = 16
-    /// Deprecated - Use EzSpacing instead
-    static let spacing20: CGFloat = 20
-    
-    // MARK: - DEPRECATED: Legacy Colors (use EzColors instead)
-    /// Deprecated - Use EzColors.Accent.primary instead
-    static let primary = Color(red: 0.2, green: 0.6, blue: 0.8)  // #3399CC
-    /// Deprecated - Use EzColors.Accent.warning instead
-    static let secondary = Color(red: 1.0, green: 0.6, blue: 0.2)  // #FF9933
-    /// Deprecated - Use EzColors.Accent.success instead
-    static let accent = Color(red: 0.2, green: 0.8, blue: 0.4)  // #33CC66
-    
-    // MARK: - Backward Compatibility Adapters
-    /// Use EzColors.Background.primary instead
-    static func backgroundColor() -> Color {
-        EzColors.Background.primary
+    // MARK: - Corner Radius (Apple 2025 design)
+    struct CornerRadius {
+        /// Small buttons, tight components: 8px
+        static let small: CGFloat = 8
+        /// Standard cards, components: 12px
+        static let medium: CGFloat = 12
+        /// Large cards, major containers: 16px
+        static let large: CGFloat = 16
+        /// Extra large, full-width containers: 20px
+        static let extraLarge: CGFloat = 20
     }
     
-    /// Use EzColors.Background.secondary instead
-    static func cardBackground() -> Color {
-        EzColors.Background.secondary
+    // MARK: - Shadow Design (Material 3 style)
+    struct Shadows {
+        /// No elevation
+        static let none = Shadow(color: .clear, radius: 0, x: 0, y: 0)
+        
+        /// Elevation 1: Subtle cards
+        static let sm = Shadow(
+            color: Color.black.opacity(0.08),
+            radius: 2,
+            x: 0,
+            y: 1
+        )
+        
+        /// Elevation 2: Medium cards
+        static let md = Shadow(
+            color: Color.black.opacity(0.12),
+            radius: 8,
+            x: 0,
+            y: 4
+        )
+        
+        /// Elevation 3: Premium cards, modals
+        static let lg = Shadow(
+            color: Color.black.opacity(0.16),
+            radius: 16,
+            x: 0,
+            y: 8
+        )
+        
+        /// Elevation 4: Bottom sheets, floating
+        static let xl = Shadow(
+            color: Color.black.opacity(0.20),
+            radius: 24,
+            x: 0,
+            y: 12
+        )
     }
     
-    /// Use EzColors.Text.primary instead
-    static func textPrimary() -> Color {
-        EzColors.Text.primary
+    // MARK: - Semantic Colors
+    struct Colors {
+        // Primary actions
+        static let primary = EzColors.Accent.primary
+        static let primaryHover = Color(red: 0.65, green: 0.45, blue: 1.0) // Lighter
+        
+        // Success state
+        static let success = EzColors.Accent.success
+        static let successHover = Color(red: 0.1, green: 0.95, blue: 0.55)
+        
+        // Warning state
+        static let warning = EzColors.Accent.warning
+        static let warningHover = Color(red: 1.0, green: 0.8, blue: 0.4)
+        
+        // Danger/destructive
+        static let danger = EzColors.Accent.danger
+        static let dangerHover = Color(red: 1.0, green: 0.52, blue: 0.52)
+        
+        // Backgrounds
+        static let bgPrimary = EzColors.Background.primary
+        static let bgSecondary = EzColors.Background.secondary
+        static let bgTertiary = EzColors.Background.tertiary
+        static let bgSurface = EzColors.Background.surface
+        
+        // Text
+        static let textPrimary = EzColors.Text.primary
+        static let textSecondary = EzColors.Text.secondary
+        static let textTertiary = EzColors.Text.tertiary
+        static let textInverse = Color(red: 0.0, green: 0.0, blue: 0.0)
     }
     
-    /// Use EzColors.Text.secondary instead
-    static func textSecondary() -> Color {
-        EzColors.Text.secondary
+    // MARK: - Dietary Tags Colors
+    struct DietaryColors {
+        static let vegan = Color(red: 0.14, green: 0.82, blue: 0.42)        // Vibrant Green
+        static let vegetarian = Color(red: 0.2, green: 0.85, blue: 0.4)     // Light Green
+        static let glutenFree = Color(red: 0.0, green: 0.72, blue: 0.82)    // Cyan
+        static let dairyFree = Color(red: 0.95, green: 0.45, blue: 0.2)     // Orange
+        static let nutFree = Color(red: 1.0, green: 0.6, blue: 0.2)         // Warm Orange
+        static let keto = Color(red: 0.8, green: 0.2, blue: 0.8)            // Magenta
+        static let lowCarb = Color(red: 0.9, green: 0.4, blue: 0.1)         // Deep Orange
+        static let organic = Color(red: 0.1, green: 0.8, blue: 0.4)         // Fresh Green
+        static let kosher = Color(red: 0.4, green: 0.6, blue: 0.95)         // Blue
+        static let halal = Color(red: 0.2, green: 0.7, blue: 0.95)          // Sky Blue
+        static let paleo = Color(red: 0.9, green: 0.5, blue: 0.2)           // Burnt Orange
+        static let rawFood = Color(red: 0.2, green: 0.9, blue: 0.6)         // Turquoise
+        static let lowFat = Color(red: 0.95, green: 0.6, blue: 0.1)         // Gold
+        static let lowSodium = Color(red: 0.6, green: 0.8, blue: 0.3)       // Lime
+        static let highProtein = Color(red: 1.0, green: 0.3, blue: 0.3)     // Coral Red
+        static let sugarFree = Color(red: 0.95, green: 0.7, blue: 0.1)      // Bright Gold
     }
     
-    // MARK: - DEPRECATED: Legacy static colors
-    /// Deprecated - Use EzColors instead
-    static let backgroundLight = Color(red: 0.98, green: 0.98, blue: 0.99)
-    /// Deprecated - Use EzColors instead
-    static let backgroundDark = Color(red: 0.11, green: 0.11, blue: 0.12)
-    /// Deprecated - Use EzColors instead
-    static let cardLight = Color.white
-    /// Deprecated - Use EzColors instead
-    static let cardDark = Color(red: 0.17, green: 0.17, blue: 0.18)
-    /// Deprecated - Use EzColors instead
-    static let textPrimaryLegacy = Color(red: 0.1, green: 0.1, blue: 0.1)
-    /// Deprecated - Use EzColors instead
-    static let textSecondaryLegacy = Color(red: 0.6, green: 0.6, blue: 0.6)
-    /// Deprecated - Use EzColors instead
-    static let textLight = Color.white
-    
-    // Category Colors - matches SampleDataService categories
-    // Kept for backward compatibility
+    // MARK: - Backward Compatibility
     static let categoryColors: [String: Color] = EzColors.categoryColors
     
+    static func backgroundColor() -> Color { EzColors.Background.primary }
+    static func cardBackground() -> Color { EzColors.Background.secondary }
+    static func textPrimary() -> Color { EzColors.Text.primary }
+    static func textSecondary() -> Color { EzColors.Text.secondary }
+    
 }
 
-// MARK: - Text View Modifiers (DEPRECATED - use EzTypography instead)
-extension Text {
-    /// Deprecated - Use displayStyle(), headlineStyle(), etc. from EzTypography instead
-    func themeTitle() -> some View {
-        self
-            .font(.system(size: 28, weight: .bold, design: .default))
-            .foregroundColor(EzColors.Text.primary)
-    }
-    
-    /// Deprecated - Use headlineStyle() from EzTypography instead
-    func themeHeadline() -> some View {
-        self
-            .font(.system(size: 18, weight: .semibold, design: .default))
-            .foregroundColor(EzColors.Text.primary)
-    }
-    
-    /// Deprecated - Use bodySecondaryStyle() from EzTypography instead
-    func themeSubheadline() -> some View {
-        self
-            .font(.system(size: 16, weight: .medium, design: .default))
-            .foregroundColor(EzColors.Text.secondary)
-    }
-    
-    /// Deprecated - Use labelStyle() from EzTypography instead
-    func themeCaption() -> some View {
-        self
-            .font(.system(size: 12, weight: .regular, design: .default))
-            .foregroundColor(EzColors.Text.secondary)
-    }
-}
 
-// MARK: - Button Styles (DEPRECATED - use EzColors instead)
-extension Button {
-    /// Deprecated - Use EzColors.Accent.primary for styling
-    func themePrimary() -> some View {
-        self
-            .font(.system(size: 16, weight: .semibold))
-            .foregroundColor(.white)
-            .padding(.vertical, 12)
-            .padding(.horizontal, 24)
-            .background(EzColors.Accent.primary)
-            .cornerRadius(EzSpacing.Card.cornerRadius)
-    }
-    
-    /// Deprecated - Use EzColors.Accent.primary with opacity
-    func themeSecondary() -> some View {
-        self
-            .font(.system(size: 16, weight: .semibold))
-            .foregroundColor(EzColors.Accent.primary)
-            .padding(.vertical, 12)
-            .padding(.horizontal, 24)
-            .background(EzColors.Accent.primary.opacity(0.1))
-            .cornerRadius(EzSpacing.Card.cornerRadius)
-    }
-}
-
-// MARK: - View Extensions (DEPRECATED - use cardPadding() instead)
-extension View {
-    /// Deprecated - Use cardPadding() modifier from EzSpacing instead
-    func themeCard() -> some View {
-        self
-            .background(
-                RoundedRectangle(cornerRadius: EzSpacing.Card.cornerRadius)
-                    .fill(EzColors.Background.secondary)
-                    .shadow(
-                        color: Color.black.opacity(0.3),
-                        radius: EzSpacing.Card.shadowRadius,
-                        x: 0,
-                        y: EzSpacing.Card.shadowY
-                    )
-            )
-            .padding(.horizontal, EzSpacing.Component.padding)
-    }
-}

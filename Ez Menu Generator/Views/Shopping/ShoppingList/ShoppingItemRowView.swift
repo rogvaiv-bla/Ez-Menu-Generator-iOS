@@ -5,70 +5,124 @@ struct ShoppingItemRowView: View {
     @EnvironmentObject var viewModel: ShoppingListViewModel
     @State private var showEdit = false
     @State private var showDeleteAlert = false
+    @State private var isCheckedState: Bool = false
+    @State private var isHovered = false
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 16) {
-                // Large Checkbox
-                Button(action: {
-                    HapticManager.Context.checkbox()
-                    item.isChecked.toggle()
-                }) {
-                    Image(systemName: item.isChecked ? "checkmark.circle.fill" : "o.circle")
-                        .foregroundColor(item.isChecked ? EzColors.Accent.success : EzColors.Text.secondary)
-                        .font(.system(size: 32))
+            HStack(spacing: EzSpacing.lg) {
+                // Animated Checkbox
+                Button(action: toggleChecked) {
+                    ZStack {
+                        Circle()
+                            .fill(
+                                isCheckedState
+                                    ? AppTheme.Colors.success
+                                    : EzColors.Background.tertiary
+                            )
+                            .shadow(
+                                color: isCheckedState
+                                    ? AppTheme.Colors.success.opacity(0.5)
+                                    : Color.clear,
+                                radius: isCheckedState ? 6 : 0
+                            )
+                        
+                        if isCheckedState {
+                            Image(systemName: "checkmark")
+                                .font(.system(size: 14, weight: .bold))
+                                .foregroundColor(.white)
+                                .scaleEffect(1.0)
+                                .animation(AppTheme.springSnappy, value: isCheckedState)
+                        } else {
+                            Circle()
+                                .stroke(EzColors.Text.secondary, lineWidth: 2)
+                        }
+                    }
+                    .frame(width: 44, height: 44)
+                    .scaleEffect(isHovered ? 1.1 : 1.0)
                 }
-                .accessibilityLabel(item.isChecked ? "Bifat" : "Nebifat")
-                .accessibilityHint("Apasă pentru a marca ca \(item.isChecked ? "nebifat" : "bifat")")
-                .accessibilityAddTraits(.isButton)
+                .accessibilityLabel(isCheckedState ? "Bifat" : "Nebifat")
+                .accessibilityHint("Apasă pentru a marca ca \(isCheckedState ? "nebifat" : "bifat")")
                 
                 // Content
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: EzSpacing.xs) {
                     Text(item.name)
-                        .font(.system(size: 18, weight: .semibold, design: .default))
-                        .strikethrough(item.isChecked)
-                        .foregroundColor(item.isChecked ? EzColors.Text.secondary : EzColors.Text.primary)
+                        .font(EzTypography.Headline.font)
+                        .strikethrough(isCheckedState, color: EzColors.Text.secondary)
+                        .foregroundColor(
+                            isCheckedState
+                                ? EzColors.Text.secondary
+                                : EzColors.Text.primary
+                        )
                     
-                    HStack(spacing: 10) {
-                        Text("\(Int(item.quantity)) \(item.unit)")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(EzColors.Text.secondary)
+                    HStack(spacing: EzSpacing.md) {
+                        // Quantity & Unit
+                        HStack(spacing: EzSpacing.xs) {
+                            Image(systemName: "scalemass.fill")
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundColor(EzColors.Text.tertiary)
+                            
+                            Text("\(Int(item.quantity)) \(item.unit)")
+                                .font(EzTypography.Body.font)
+                                .foregroundColor(EzColors.Text.secondary)
+                        }
                         
-                        Text(item.category)
-                            .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 3)
-                            .background(EzColors.categoryColors[item.category] ?? EzColors.Accent.primary)
-                            .cornerRadius(4)
+                        // Category Badge
+                        HStack(spacing: 4) {
+                            Text(item.category)
+                                .font(EzTypography.Helper.font)
+                                .fontWeight(.semibold)
+                        }
+                        .foregroundColor(.white)
+                        .padding(.horizontal, EzSpacing.sm)
+                        .padding(.vertical, 3)
+                        .background(
+                            RoundedRectangle(cornerRadius: AppTheme.CornerRadius.small)
+                                .fill(
+                                    EzColors.categoryColors[item.category]
+                                        ?? EzColors.Accent.primary
+                                )
+                        )
                     }
                 }
                 
                 Spacer()
                 
-                // Action Buttons
-                VStack(spacing: 8) {
+                // Action Buttons (More Elegant)
+                HStack(spacing: EzSpacing.md) {
                     Button(action: { showEdit = true }) {
-                        Image(systemName: "pencil.circle.fill")
-                            .foregroundColor(EzColors.Accent.primary)
-                            .font(.system(size: 24))
+                        Image(systemName: "pencil")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(AppTheme.Colors.primary)
+                            .padding(EzSpacing.sm)
+                            .background(
+                                Circle()
+                                    .fill(AppTheme.Colors.primary.opacity(0.1))
+                            )
                     }
-                    .accessibilityLabel("Editează")
+                    .accessibilityLabel("Editează item")
                     .sheet(isPresented: $showEdit) {
                         EditShoppingItemView(item: item)
                             .environmentObject(viewModel)
                     }
                     
                     Button(action: { showDeleteAlert = true }) {
-                        Image(systemName: "trash.circle.fill")
-                            .foregroundColor(EzColors.Accent.danger)
-                            .font(.system(size: 24))
+                        Image(systemName: "trash")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(AppTheme.Colors.danger)
+                            .padding(EzSpacing.sm)
+                            .background(
+                                Circle()
+                                    .fill(AppTheme.Colors.danger.opacity(0.1))
+                            )
                     }
-                    .accessibilityLabel("Șterge")
+                    .accessibilityLabel("Șterge item")
                     .alert("Șterge item", isPresented: $showDeleteAlert) {
                         Button("Șterge", role: .destructive) {
                             HapticManager.Context.delete()
-                            viewModel.undoRedoManager.recordAction(.deleteShoppingItem(ShoppingItemSnapshot.from(item)))
+                            viewModel.undoRedoManager.recordAction(
+                                .deleteShoppingItem(ShoppingItemSnapshot.from(item))
+                            )
                             viewModel.deleteItem(item)
                         }
                         Button("Anulează", role: .cancel) { }
@@ -77,25 +131,51 @@ struct ShoppingItemRowView: View {
                     }
                 }
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 16)
+            .padding(EzSpacing.lg)
             .contentShape(Rectangle())
-            .onTapGesture {
-                HapticManager.Context.checkbox()
-                item.isChecked.toggle()
-            }
-            .opacity(item.isChecked ? 0.65 : 1)
-            
-            Divider()
-                .padding(.leading, 72)
+        }
+        .premiumCard(elevation: .small)
+        .padding(.horizontal, EzSpacing.md)
+        .padding(.vertical, EzSpacing.xs)
+        .transition(.scale.combined(with: .opacity))
+        .animation(AppTheme.springStandard, value: item.id)
+        .scaleEffect(isHovered ? 1.01 : 1.0)
+        .animation(AppTheme.springSnappy, value: isHovered)
+        .onHover { hover in
+            isHovered = hover
+        }
+        .onAppear {
+            isCheckedState = item.isChecked
+        }
+        .onChange(of: item.isChecked) { _, newValue in
+            isCheckedState = newValue
         }
         .accessibilityElement(children: .contain)
         .accessibilityLabel("\(item.name), \(Int(item.quantity)) \(item.unit)")
-        .accessibilityValue(item.isChecked ? "Bifat" : "Nebifat")
+        .accessibilityValue(isCheckedState ? "Bifat" : "Nebifat")
+    }
+    
+    private func toggleChecked() {
+        HapticManager.Context.checkbox()
+        item.isChecked.toggle()
+        isCheckedState = item.isChecked
     }
 }
 
 #Preview {
-    let item = ShoppingItem(name: "Lapte", quantity: 2, unit: "l", category: "Lactate și ouă")
-    ShoppingItemRowView(item: item)
+    VStack(spacing: EzSpacing.md) {
+        let item1 = ShoppingItem(
+            name: "Lapte integral",
+            quantity: 2,
+            unit: "l",
+            category: "Lactate și ouă 🧈🥚"
+        )
+        
+        ShoppingItemRowView(item: item1)
+        
+        Spacer()
+    }
+    .padding(EzSpacing.lg)
+    .background(EzColors.Background.primary.ignoresSafeArea())
+    .environmentObject(ShoppingListViewModel())
 }

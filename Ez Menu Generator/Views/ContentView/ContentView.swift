@@ -155,54 +155,128 @@ struct ContentView: View {
         }
     }
     
-    // MARK: - iPhone Layout (TabView)
+    // MARK: - iPhone Layout (Premium TabView)
     
     @ViewBuilder
     var iPhoneLayout: some View {
-        TabView(selection: $selectedTab) {
-            // TAB 0: HOME - Weekly Planning Hub
-            MenuListView()
-                .environmentObject(menuListViewModel)
-                .tabItem {
-                    Label("Home", systemImage: "calendar.circle.fill")
+        ZStack(alignment: .bottom) {
+            TabView(selection: $selectedTab) {
+                // TAB 0: HOME - Weekly Planning Hub
+                MenuListView()
+                    .environmentObject(menuListViewModel)
+                    .tag(0)
+                
+                // TAB 1: RECIPES - Discovery + Library
+                NavigationStack {
+                    RecipeListView()
+                        .environmentObject(recipeListViewModel)
                 }
-                .accessibilityLabel("Tab: Home - Weekly Menu Planning")
-                .accessibilityHint("View and manage your weekly meal plans")
-                .tag(0)
-            
-            // TAB 1: RECIPES - Discovery + Library
-            NavigationStack {
-                RecipeListView()
-                    .environmentObject(recipeListViewModel)
+                .tag(1)
+                
+                // TAB 2: SHOP - Collaborative Shopping List
+                ShoppingListView()
+                    .environmentObject(shoppingListViewModel)
+                    .tag(2)
+                
+                // TAB 3: ANALYZE - Product Scanning + Tracking
+                AnalyzeView()
+                    .tag(3)
             }
-            .tabItem {
-                Label("Recipes", systemImage: "book.fill")
-            }
-            .accessibilityLabel("Tab: Recipes Library")
-            .accessibilityHint("Browse and manage your recipe collection")
-            .tag(1)
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .indexViewStyle(.page(backgroundDisplayMode: .never))
             
-            // TAB 2: SHOP - Collaborative Shopping List
-            ShoppingListView()
-                .environmentObject(shoppingListViewModel)
-                .tabItem {
-                    Label("Shop", systemImage: "cart.fill")
-                }
-                .accessibilityLabel("Tab: Shopping List")
-                .accessibilityHint("Manage your household shopping items")
-                .tag(2)
-            
-            // TAB 3: ANALYZE - Product Scanning + Tracking
-            AnalyzeView()
-                .tabItem {
-                    Label("Analyze", systemImage: "magnifyingglass.circle.fill")
-                }
-                .accessibilityLabel("Tab: Product Analyzer")
-                .accessibilityHint("Scan products and view nutritional information")
-                .tag(3)
+            // Premium Custom Tab Bar
+            PremiumTabBar(selectedTab: $selectedTab)
         }
         .accentColor(EzColors.Accent.primary)
     }
+}
+
+// MARK: - Premium Tab Bar Component
+
+struct PremiumTabBar: View {
+    @Binding var selectedTab: Int
+    
+    let tabs: [TabBarItem] = [
+        TabBarItem(title: "Home", icon: "calendar.circle.fill", tag: 0),
+        TabBarItem(title: "Recipes", icon: "book.fill", tag: 1),
+        TabBarItem(title: "Shop", icon: "cart.fill", tag: 2),
+        TabBarItem(title: "Analyze", icon: "magnifyingglass.circle.fill", tag: 3)
+    ]
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Divider()
+                .background(EzColors.Background.tertiary)
+            
+            HStack(spacing: 0) {
+                ForEach(tabs, id: \.tag) { tab in
+                    VStack(spacing: EzSpacing.xs) {
+                        // Icon with indicator
+                        ZStack(alignment: .topTrailing) {
+                            Image(systemName: tab.icon)
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(
+                                    selectedTab == tab.tag
+                                        ? AppTheme.Colors.primary
+                                        : EzColors.Text.tertiary
+                                )
+                            
+                            if selectedTab == tab.tag {
+                                Circle()
+                                    .fill(AppTheme.Colors.primary)
+                                    .frame(width: 8, height: 8)
+                                    .offset(x: 2, y: -2)
+                                    .transition(.scale.combined(with: .opacity))
+                            }
+                        }
+                        
+                        // Label
+                        Text(tab.title)
+                            .font(EzTypography.Helper.font)
+                            .fontWeight(selectedTab == tab.tag ? .semibold : .regular)
+                            .foregroundColor(
+                                selectedTab == tab.tag
+                                    ? AppTheme.Colors.primary
+                                    : EzColors.Text.tertiary
+                            )
+                            .lineLimit(1)
+                        
+                        // Bottom indicator
+                        if selectedTab == tab.tag {
+                            Capsule()
+                                .fill(AppTheme.Colors.primary)
+                                .frame(height: 3)
+                                .transition(.scale)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, EzSpacing.md)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        withAnimation(AppTheme.springSnappy) {
+                            selectedTab = tab.tag
+                        }
+                    }
+                    .accessibilityLabel(tab.title)
+                    .accessibilityAddTraits(
+                        selectedTab == tab.tag ? .isSelected : []
+                    )
+                }
+            }
+            .background(EzColors.Background.secondary)
+            .frame(height: 60)
+        }
+        .background(EzColors.Background.secondary)
+    }
+}
+
+// MARK: - Tab Bar Item
+
+struct TabBarItem {
+    let title: String
+    let icon: String
+    let tag: Int
 }
 
 #Preview {
@@ -219,7 +293,7 @@ struct ContentView: View {
             ShoppingItemV2.self,
             ActivityLog.self
         ], inMemory: true)
-        .preferredColorScheme(.light)
+        .preferredColorScheme(.dark)
 }
 
 // MARK: - Settings Sheet

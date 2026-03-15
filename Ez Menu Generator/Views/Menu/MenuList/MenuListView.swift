@@ -48,56 +48,53 @@ struct MenuListView: View {
                 }
                 
                 // Main Content
-                ZStack {
-                    if let primaryMenu = primaryMenu {
-                        // Weekly View (REDESIGN 4.0)
-                        WeeklyMenuView(menu: primaryMenu) {
-                            selectedMenu = primaryMenu
-                        }
-                    } else {
-                        // Empty State - No Menu
-                        VStack(spacing: EzSpacing.xl) {
-                            Image(systemName: "calendar.badge.plus")
-                                .font(.system(size: 64, weight: .thin))
-                                .foregroundColor(EzColors.Text.tertiary)
+                if let primaryMenu = primaryMenu {
+                    // Weekly View (REDESIGN 4.0)
+                    WeeklyMenuView(menu: primaryMenu) {
+                        selectedMenu = primaryMenu
+                    }
+                } else {
+                    // Premium Empty State
+                    ScrollView {
+                        VStack(spacing: 0) {
+                            EmptyStateView.noMenus(action: {
+                                showAddMenu = true
+                            })
                             
-                            VStack(spacing: EzSpacing.xs) {
-                                Text("Niciun meniu planificat")
-                                    .font(.system(size: 20, weight: .semibold))
+                            Spacer()
+                                .frame(height: EzSpacing.xxl)
+                            
+                            // Quick Actions Section
+                            VStack(alignment: .leading, spacing: EzSpacing.md) {
+                                Text("Quick Actions")
+                                    .font(EzTypography.Headline.font)
                                     .foregroundColor(EzColors.Text.primary)
-                                    .multilineTextAlignment(.center)
-                                
-                                Text("Începe prin a crea un meniu manual sau generează unul automat.")
-                                    .font(.system(size: 15, weight: .regular))
-                                    .foregroundColor(EzColors.Text.secondary)
-                                    .multilineTextAlignment(.center)
-                                    .lineSpacing(4)
                                     .padding(.horizontal, EzSpacing.lg)
-                            }
-                            
-                            VStack(spacing: EzSpacing.md) {
-                                EzButton(
-                                    "Generează meniu automat",
-                                    icon: "wand.and.stars",
-                                    style: .primary,
-                                    size: .medium
-                                ) {
-                                    viewModel.generateRandomMenu()
-                                }
-                                .disabled(viewModel.isGeneratingMenu)
                                 
-                                EzButton(
-                                    "Crează meniu manual",
-                                    icon: "pencil",
-                                    style: .secondary,
-                                    size: .medium
-                                ) {
-                                    showAddMenu = true
+                                VStack(spacing: EzSpacing.md) {
+                                    QuickActionButton(
+                                        icon: "wand.and.stars",
+                                        title: "Auto-Generate Menu",
+                                        description: "Create a balanced weekly menu with a single tap",
+                                        action: {
+                                            viewModel.generateRandomMenu()
+                                        },
+                                        isLoading: viewModel.isGeneratingMenu
+                                    )
+                                    
+                                    QuickActionButton(
+                                        icon: "pencil",
+                                        title: "Create Manually",
+                                        description: "Build your own custom menu from scratch",
+                                        action: {
+                                            showAddMenu = true
+                                        }
+                                    )
                                 }
+                                .padding(.horizontal, EzSpacing.lg)
                             }
-                            .padding(.horizontal, EzSpacing.xl)
+                            .padding(.vertical, EzSpacing.xl)
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
             }
@@ -210,6 +207,72 @@ struct DeleteMenuConfirmationOverlay: View {
         }
         .transition(.opacity)
         .animation(.easeInOut(duration: 0.2), value: isPresented)
+    }
+}
+
+// MARK: - Quick Action Button
+
+struct QuickActionButton: View {
+    let icon: String
+    let title: String
+    let description: String
+    let action: () -> Void
+    var isLoading: Bool = false
+    
+    @State private var isPressed = false
+    
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: EzSpacing.lg) {
+                // Icon
+                Image(systemName: icon)
+                    .font(.system(size: 24, weight: .semibold))
+                    .foregroundColor(AppTheme.Colors.primary)
+                    .frame(width: 48, height: 48)
+                    .background(
+                        RoundedRectangle(cornerRadius: AppTheme.CornerRadius.medium)
+                            .fill(AppTheme.Colors.primary.opacity(0.1))
+                    )
+                
+                // Text Content
+                VStack(alignment: .leading, spacing: EzSpacing.xs) {
+                    Text(title)
+                        .font(EzTypography.Headline.font)
+                        .foregroundColor(EzColors.Text.primary)
+                    
+                    Text(description)
+                        .font(EzTypography.Body.font)
+                        .foregroundColor(EzColors.Text.secondary)
+                        .lineLimit(1)
+                }
+                
+                Spacer()
+                
+                // Chevron
+                if !isLoading {
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(EzColors.Text.tertiary)
+                } else {
+                    ProgressView()
+                        .tint(AppTheme.Colors.primary)
+                }
+            }
+            .padding(EzSpacing.lg)
+        }
+        .disabled(isLoading)
+        .premiumCard(elevation: .medium)
+        .scaleEffect(isPressed ? 0.98 : 1.0)
+        .animation(AppTheme.springSnappy, value: isPressed)
+        .gesture(
+            LongPressGesture(minimumDuration: 0)
+                .onChanged { _ in
+                    isPressed = true
+                }
+                .onEnded { _ in
+                    isPressed = false
+                }
+        )
     }
 }
 

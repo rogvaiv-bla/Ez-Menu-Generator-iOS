@@ -143,7 +143,7 @@ struct RecipeRowView: View {
         case let c where c.contains("mic dejun"):
             return "sun.max.fill"
         default:
-            return "utensils.circle.fill"
+            return "fork.knife.circle.fill"
         }
     }
 }
